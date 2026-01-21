@@ -1,0 +1,26 @@
+{
+  "name": "hs-cypress-saucedemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Z0ck0/hs-cypress-saucedemo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Z0ck0/hs-cypress-saucedemo/issues"
+  },
+  "homepage": "https://github.com/Z0ck0/hs-cypress-saucedemo#readme",
+  "devDependencies": {
+    "@types/node": "^25.0.9",
+    "cypress": "^15.9.0",
+    "typescript": "^5.9.3"
+  }
+}
