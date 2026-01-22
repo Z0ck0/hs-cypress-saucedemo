@@ -1,27 +1,24 @@
 import { getCredentials, UserRoleType } from '../support/userCredentials';
 
-
 export class LoginPage {
+
+    // Selectors
     private usernameInput() {
-        return cy.get('[data-test="username"]');
+        return cy.getByTestId('username');
     }
     private passwordInput() {
-        return cy.get('[data-test="password"]');
+        return cy.getByTestId('password');
     }
     private loginButton() {
-        return cy.get('[data-test="login-button"]');
+        return cy.getByTestId('login-button');
     }
 
-    logIn(username: string, password: string): void {
-        this.usernameInput().clear().type(username);
-        this.passwordInput().clear().type(password);
-        this.loginButton().click();
-
-    }
-
+    // Actions
     loginAs(role: UserRoleType): void {
         const user = getCredentials(role);
-        this.logIn(user.username, user.password);
+        this.usernameInput().clear().type(user.username);
+        this.passwordInput().clear().type(user.password);
+        this.loginButton().click();
     }
 }
 
