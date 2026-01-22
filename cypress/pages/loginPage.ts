@@ -2,7 +2,9 @@ import { getCredentials, UserRoleType } from '../support/userCredentials';
 
 export class LoginPage {
 
-    // Selectors
+    //------------------------------------------------
+    // Login Page Selectors
+    //------------------------------------------------
     private usernameInput() {
         return cy.getByTestId('username');
     }
@@ -13,7 +15,9 @@ export class LoginPage {
         return cy.getByTestId('login-button');
     }
 
-    // Actions
+    //------------------------------------------------
+    // Inventory Page Actions
+    //------------------------------------------------
     loginAs(role: UserRoleType): void {
         const user = getCredentials(role);
         this.usernameInput().clear().type(user.username);
