@@ -1,6 +1,6 @@
 export const UserRole = {
-  SAUCE_STANDARD_USER: "standard_user",
-  SAUCE_LOCKED_OUT_USER: "locked_out_user",
-  SAUCE_PROBLEM_USER: "problem_user",
-  SAUCE_ERROR_USER: "error_user",
+  STANDARD: "standard_user",
+  LOCKED_OUT: "locked_out_user",
+  PROBLEM: "problem_user",
+  ERROR: "error_user",
 };
