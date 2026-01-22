@@ -1,3 +1,6 @@
+import { getCredentials, UserRoleType } from '../support/userCredentials';
+
+
 export class LoginPage {
     private usernameInput() {
         return cy.get('[data-test="username"]');
@@ -15,4 +18,11 @@ export class LoginPage {
         this.loginButton().click();
 
     }
+
+    loginAs(role: UserRoleType): void {
+        const user = getCredentials(role);
+        this.logIn(user.username, user.password);
+    }
 }
+
+export const onLoginPage = new LoginPage();

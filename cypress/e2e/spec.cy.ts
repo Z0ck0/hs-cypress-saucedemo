@@ -1,12 +1,10 @@
-import { LoginPage } from '../pages/loginPage';
+import { onLoginPage } from '../pages/loginPage';
+import { UserRole } from '../support/enums/userRole';
+
 describe('login test', () => {
     it('logs in standard user', () => {
         cy.visit('/');
-        const loginPage = new LoginPage();
-        loginPage.logIn(
-            Cypress.env('STANDARD_USER'), 
-            Cypress.env('PASSWORD')
-        );
+        onLoginPage.loginAs(UserRole.STANDARD);
         cy.url().should('include', '/inventory.html')
     });
 });
