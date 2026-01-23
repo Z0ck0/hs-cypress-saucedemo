@@ -21,6 +21,7 @@ export class LoginPage {
         return cy.getByTestId('error');
     }
 
+
     //------------------------------------------------
     // Inventory Page Actions
     //------------------------------------------------
@@ -31,9 +32,15 @@ export class LoginPage {
         this.loginButton().click();
     }
 
+
     //------------------------------------------------
     // Login Page Assertions Methods
     //------------------------------------------------
+    /**
+     * Assert that the login page is visible and the username, password, and login button are visible
+     * @example
+     * expectLoginPageToBeVisible();
+     */
     expectLoginPageToBeVisible(): void {
         this.loginPageUrl().should('include', 'saucedemo.com');
         this.usernameInput().should('be.visible')
@@ -42,8 +49,8 @@ export class LoginPage {
     }
     expectLockedOutErrorToBeDisplayed(): void {
         this.loginErrorMessage()
-        .should('be.visible')
-        .and('contain.text', 'Epic sadface: Sorry, this user has been locked out.');
+            .should('be.visible')
+            .and('contain.text', 'Epic sadface: Sorry, this user has been locked out.');
     }
 }
 

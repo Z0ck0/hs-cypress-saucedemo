@@ -23,6 +23,12 @@ export class InventoryPage {
     //------------------------------------------------
     // Inventory Page Actions
     //------------------------------------------------
+    /**
+     * Add an item to the cart
+     * @param productKey - The product key to add to the cart
+     * @example
+     * addItemToCart('sauce-labs-fleece-jacket');
+     */
     addItemToCart(productKey: string): void {
         cy.getByTestId(`add-to-cart-${productKey}`).click();
     }
@@ -41,6 +47,13 @@ export class InventoryPage {
         this.inventoryContainer().should('be.visible');
         this.getUrl().should('include', 'inventory.html');
     }
+    /**
+     * Assert that the product image src matches the expected src
+     * @param productKey - The product key
+     * @param expectedSrc - The expected src to be included in the image src attribute
+     * @example
+     * expectProductImageSrcToMatch('sauce-labs-fleece-jacket', 'https://www.saucedemo.com/static/media/sauce-labs-fleece-jacket.68174a58.jpg');
+     */
     expectProductImageSrcToMatch(productKey: string, expectedSrc: string): void {
         this.inventoryItemImage(productKey)
             .should('be.visible')

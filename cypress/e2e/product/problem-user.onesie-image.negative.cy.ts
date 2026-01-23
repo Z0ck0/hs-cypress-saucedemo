@@ -8,6 +8,6 @@ describe('Login as problem user ', () => {
         onInventoryPage.expectUserToBeLoggedIn();
     });
     it('Check that the onesie image is shown as the source for the onesie', () => {
-        onInventoryPage.expectProductImageSrcToMatch('sauce-labs-onesie-img', 'sl-404');
+        onInventoryPage.expectProductImageSrcToMatch('sauce-labs-onesie-img', 'red-onesie');
     });
 });

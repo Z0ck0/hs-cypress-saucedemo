@@ -8,4 +8,8 @@ node_modules/
 
 # Cypress artifacts
 cypress/screenshots/
+cypress/downloads/
+cypress/videos/
+cypress/reports/
+
 
