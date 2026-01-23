@@ -23,8 +23,8 @@ export class InventoryPage {
     //------------------------------------------------
     // Inventory Page Actions
     //------------------------------------------------
-    addItemToCart(string: string): void {
-        cy.getByTestId(`add-to-cart-${string}`).click();
+    addItemToCart(productKey: string): void {
+        cy.getByTestId(`add-to-cart-${productKey}`).click();
     }
     openCart(): void {
         this.cartLink().click();
@@ -43,10 +43,15 @@ export class InventoryPage {
     }
     expectProductImageSrcToMatch(productKey: string, expectedSrc: string): void {
         this.inventoryItemImage(productKey)
-        .should('be.visible')
-        .should('have.attr', 'src')
-        .and('include', expectedSrc);
+            .should('be.visible')
+            .should('have.attr', 'src')
+            .and('include', expectedSrc);
     }
+    expectCartBadgeToBeDisplayed(): void {
+        this.cartBadge()
+            .should('be.visible')
+    }
+
 }
 
 export const onInventoryPage = new InventoryPage();

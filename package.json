@@ -9,7 +9,10 @@
     "test:all": "cypress run",
     "test:smoke": "cypress run --spec \"cypress/e2e/**/*smoke.cy.ts\"",
     "test:positive": "cypress run --spec \"cypress/e2e/**/*positive.cy.ts\"",
-    "test:auth": "cypress run --spec \"cypress/e2e/auth/**/*.cy.ts\""
+    "test:negative": "cypress run --spec \"cypress/e2e/**/*negative.cy.ts\"",
+    "test:auth": "cypress run --spec \"cypress/e2e/auth/**/*.cy.ts\"",
+    "test:product": "cypress run --spec \"cypress/e2e/product/**/*.cy.ts\"",
+    "test:cart": "cypress run --spec \"cypress/e2e/cart/**/*.cy.ts\""
   },
   "repository": {
     "type": "git",

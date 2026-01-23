@@ -21,8 +21,11 @@ Basic Cypress + TypeScript E2E framework setup for testing https://www.saucedemo
    ### Run tests by type (file naming):
    - `npm run test:smoke` - Run ALL smoke tests
    - `npm run test:positive` - Run ALL positive flow tests
+   - `npm run test:negative` - Run ALL negative flow tests
    ### Run tests by feature (folder):
    - `npm run test:auth` - Run ALL auth tests under auth folder
+   - `npm run test:product` - Run ALL tests under product folder
+   - `npm run test:cart` - Run ALL tests under cart folder
 
 
 ## Project Structure
