@@ -5,3 +5,7 @@ node_modules/
 .env
 .env.*
 !.env.credentials.example
+
+# Cypress artifacts
+cypress/screenshots/
+

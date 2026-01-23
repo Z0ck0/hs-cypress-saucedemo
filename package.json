@@ -6,7 +6,10 @@
   "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "test": "cypress run"
+    "test:all": "cypress run",
+    "test:smoke": "cypress run --spec \"cypress/e2e/**/*smoke.cy.ts\"",
+    "test:positive": "cypress run --spec \"cypress/e2e/**/*positive.cy.ts\"",
+    "test:auth": "cypress run --spec \"cypress/e2e/auth/**/*.cy.ts\""
   },
   "repository": {
     "type": "git",

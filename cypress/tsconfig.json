@@ -3,7 +3,9 @@
     "target": "es6",
     "lib": ["es6", "dom"],
     "sourceMap": true,
-    "types": ["cypress", "node"]
+    "types": ["cypress", "node"],
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "include": ["**/*.ts"]
 }

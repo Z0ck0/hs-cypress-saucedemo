@@ -9,15 +9,6 @@ export class InventoryPage {
     private inventoryContainer() {
         return cy.getByTestId('inventory-container');
     }
-    private addToCartSauceLabsBackpackButton() {
-        return cy.getByTestId('add-to-cart-sauce-labs-backpack');
-    }
-    private addToCartFleeceJacketButton() {
-        return cy.getByTestId('add-to-cart-fleece-jacket');
-    }
-    private addToCartOnesieButton() {
-        return cy.getByTestId('add-to-cart-onesie');
-    }
     private cartLink() {
         return cy.getByTestId('shopping-cart-link');
     }
