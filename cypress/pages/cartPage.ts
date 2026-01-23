@@ -6,34 +6,33 @@ export class CartPage {
     private cartList() {
         return cy.getByTestId('cart-list');
     }
-    private removeSauceLabsBackpackButton() {
-        return cy.getByTestId('remove-sauce-labs-backpack');
-    }
-    private removeFleeceJacketButton() {
-        return cy.getByTestId('remove-fleece-jacket');
-    }
     private itemQuantity() {
         return cy.getByTestId('item-quantity');
+    }
+    private removeButton(string: string) {
+        return cy.getByTestId(`remove-${string}`);
     }
 
 
     //------------------------------------------------
     // Cart Page Actions
     //------------------------------------------------
-    verifyCartListIsVisible(): void {
-        this.cartList().should('be.visible');
-    }
-    verifyRemoveSauceLabsBackpackButtonIsVisible(): void {
-        this.removeSauceLabsBackpackButton().should('be.visible');
-    }
-    verifyRemoveFleeceJacketButtonIsVisible(): void {
-        this.removeFleeceJacketButton().should('be.visible');
-    }
-    verifyItemQuantityIsVisible(): void {
-        this.itemQuantity().should('be.visible');
-    }
     getItemQuantity() {
         return this.itemQuantity().invoke('text');
+    }
+
+
+    //------------------------------------------------
+    // Cart Page Assertions Methods
+    //------------------------------------------------
+    expectCartListToBeVisible(): void {
+        this.cartList().should('be.visible');
+    }
+    expectRemoveButtonToBeVisible(string: string): void {
+        this.removeButton(string).should('be.visible');
+    }
+    expectItemQuantityToBe(string: string): void {
+        this.itemQuantity().should('have.text', string);
     }
 }
 

@@ -5,6 +5,9 @@ export class LoginPage {
     //------------------------------------------------
     // Login Page Selectors
     //------------------------------------------------
+    private loginPageUrl() {
+        return cy.url();
+    }
     private usernameInput() {
         return cy.getByTestId('username');
     }
@@ -13,6 +16,9 @@ export class LoginPage {
     }
     private loginButton() {
         return cy.getByTestId('login-button');
+    }
+    private loginErrorMessage() {
+        return cy.getByTestId('error');
     }
 
     //------------------------------------------------
@@ -23,6 +29,16 @@ export class LoginPage {
         this.usernameInput().clear().type(user.username);
         this.passwordInput().clear().type(user.password);
         this.loginButton().click();
+    }
+
+    //------------------------------------------------
+    // Login Page Assertions Methods
+    //------------------------------------------------
+    expectLoginPageToBeVisible(): void {
+        this.loginPageUrl().should('include', 'saucedemo.com');
+        this.usernameInput().should('be.visible')
+        this.passwordInput().should('be.visible')
+        this.loginButton().should('be.visible')
     }
 }
 

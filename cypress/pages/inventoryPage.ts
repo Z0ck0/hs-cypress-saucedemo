@@ -3,6 +3,9 @@ export class InventoryPage {
     //------------------------------------------------
     // Inventory Page Selectors
     //------------------------------------------------
+    private getUrl() {
+        return cy.url();
+    }
     private inventoryContainer() {
         return cy.getByTestId('inventory-container');
     }
@@ -26,23 +29,23 @@ export class InventoryPage {
     //------------------------------------------------
     // Inventory Page Actions
     //------------------------------------------------
-    verifyInventoryContainerIsVisible(): void {
-        this.inventoryContainer().should('be.visible');
-    }
-    addToCartSauceLabsBackpack(): void {
-        this.addToCartSauceLabsBackpackButton().click();
-    }
-    addToCartFleeceJacket(): void {
-        this.addToCartFleeceJacketButton().click();
-    }
-    addToCartOnesie(): void {
-        this.addToCartOnesieButton().click();
+    addItemToCart(string: string): void {
+        cy.getByTestId(`add-to-cart-${string}`).click();
     }
     openCart(): void {
         this.cartLink().click();
     }
     getCartBadgeText() {
         return this.cartBadge().invoke('text');
+    }
+
+
+    //------------------------------------------------
+    // Inventory Page Assertions Methods
+    //------------------------------------------------
+    expectUserToBeLoggedIn(): void {
+        this.inventoryContainer().should('be.visible');
+        this.getUrl().should('include', 'inventory.html');
     }
 }
 
