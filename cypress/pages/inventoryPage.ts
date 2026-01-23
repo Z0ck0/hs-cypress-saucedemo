@@ -15,6 +15,9 @@ export class InventoryPage {
     private cartBadge() {
         return cy.getByTestId('shopping-cart-badge');
     }
+    private inventoryItemImage(productKey: string) {
+        return cy.getByTestId(`inventory-item-${productKey}`);
+    }
 
 
     //------------------------------------------------
@@ -37,6 +40,12 @@ export class InventoryPage {
     expectUserToBeLoggedIn(): void {
         this.inventoryContainer().should('be.visible');
         this.getUrl().should('include', 'inventory.html');
+    }
+    expectProductImageSrcToMatch(productKey: string, expectedSrc: string): void {
+        this.inventoryItemImage(productKey)
+        .should('be.visible')
+        .should('have.attr', 'src')
+        .and('include', expectedSrc);
     }
 }
 

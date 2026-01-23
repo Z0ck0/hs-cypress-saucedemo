@@ -40,6 +40,11 @@ export class LoginPage {
         this.passwordInput().should('be.visible')
         this.loginButton().should('be.visible')
     }
+    expectLockedOutErrorToBeDisplayed(): void {
+        this.loginErrorMessage()
+        .should('be.visible')
+        .and('contain.text', 'Epic sadface: Sorry, this user has been locked out.');
+    }
 }
 
 export const onLoginPage = new LoginPage();
