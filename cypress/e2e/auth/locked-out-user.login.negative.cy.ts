@@ -2,6 +2,10 @@ import { onLoginPage } from '../../pages/loginPage';
 import { UserRole } from '../../support/enums/userRoles';
 
 describe('Login attempt with a locked out user', () => {
+    beforeEach(() => {
+        cy.openAndVerifyLoginPage();
+    });
+
     it('Should display a locked out error message on login', () => {
         onLoginPage.loginAs(UserRole.LOCKED_OUT);
         onLoginPage.expectLockedOutErrorToBeDisplayed();

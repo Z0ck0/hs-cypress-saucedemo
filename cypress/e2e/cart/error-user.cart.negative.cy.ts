@@ -5,6 +5,7 @@ import { UserRole } from '../../support/enums/userRoles';
 
 describe('Login with error user', () => {
     beforeEach(() => {
+        cy.openAndVerifyLoginPage();
         Cypress.on('uncaught:exception', () => {
             // returning false here prevents Cypress from
             // failing the test

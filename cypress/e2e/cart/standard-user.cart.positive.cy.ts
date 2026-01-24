@@ -1,4 +1,3 @@
-import { onLoginPage } from '../../pages/loginPage';
 import { UserRole } from '../../support/enums/userRoles';
 import { onInventoryPage } from '../../pages/inventoryPage';
 import { onCartPage } from '../../pages/cartPage';
@@ -6,8 +5,7 @@ import { ProductName } from '../../support/enums/productNames';
 
 describe('Login as standard user', () => {
     beforeEach(() => {
-        onLoginPage.loginAs(UserRole.STANDARD);
-        onInventoryPage.expectUserToBeLoggedIn();
+        cy.loginAsSession(UserRole.STANDARD);
     });
     
     it('Should successfully login and navigate to inventory page', () => {

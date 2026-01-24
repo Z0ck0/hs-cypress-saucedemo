@@ -9,6 +9,7 @@ export default defineConfig({
     viewportWidth: 1280,
     viewportHeight: 720,
     video: true,
+    testIsolation: false,
     env: {
       PASSWORD: process.env.PASSWORD,
       STANDARD_USER: process.env.STANDARD_USER,

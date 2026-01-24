@@ -5,6 +5,7 @@ import { ProductName } from '../../support/enums/productNames';
 
 describe('Login as problem user ', () => {
     beforeEach(() => {
+        cy.openAndVerifyLoginPage();
         onLoginPage.loginAs(UserRole.PROBLEM);
         onInventoryPage.expectUserToBeLoggedIn();
     });
