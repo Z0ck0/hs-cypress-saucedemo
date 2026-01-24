@@ -1,20 +1,24 @@
 import { onLoginPage } from '../../pages/loginPage';
-import { UserRole } from '../../support/enums/userRole';
+import { UserRole } from '../../support/enums/userRoles';
 import { onInventoryPage } from '../../pages/inventoryPage';
 import { onCartPage } from '../../pages/cartPage';
+import { ProductName } from '../../support/enums/productNames';
 
 describe('Login as standard user', () => {
     beforeEach(() => {
         onLoginPage.loginAs(UserRole.STANDARD);
         onInventoryPage.expectUserToBeLoggedIn();
     });
-    it('Confirm login and check the URL', () => {
+    
+    it('Should successfully login and navigate to inventory page', () => {
         // Login is confirmed in the beforeEach hook
+        onInventoryPage.expectUserToBeLoggedIn();
     });
-    it('Add items to the cart, verify quantity and remove button visibility', () => {
-        onInventoryPage.addItemToCart('sauce-labs-backpack');
+    
+    it('Should add items to the cart, verify quantity and remove button visibility', () => {
+        onInventoryPage.addItemToCart(ProductName.BACKPACK);
         onInventoryPage.openCart();
         onCartPage.expectItemQuantityToBe('1');
-        onCartPage.expectRemoveButtonToBeVisible('sauce-labs-backpack');
+        onCartPage.expectRemoveButtonToBeVisible(ProductName.BACKPACK);
     });
 });

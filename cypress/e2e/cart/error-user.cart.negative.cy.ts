@@ -1,7 +1,7 @@
 import { onInventoryPage } from '../../pages/inventoryPage';
 import { onLoginPage } from '../../pages/loginPage';
-import { UserRole } from '../../support/enums/userRole';
-
+import { ProductName } from '../../support/enums/productNames';
+import { UserRole } from '../../support/enums/userRoles';
 
 describe('Login with error user', () => {
     beforeEach(() => {
@@ -15,8 +15,8 @@ describe('Login with error user', () => {
         onInventoryPage.expectUserToBeLoggedIn();
     });
 
-    it('Add fleece jacket to cart and confirm (this should fail)', () => {
-        onInventoryPage.addItemToCart('sauce-labs-fleece-jacket');
+    it('Should add fleece jacket to cart and confirm (this should fail)', () => {
+        onInventoryPage.addItemToCart(ProductName.FLEECE_JACKET);
         onInventoryPage.expectCartBadgeToBeDisplayed();
     });
 });

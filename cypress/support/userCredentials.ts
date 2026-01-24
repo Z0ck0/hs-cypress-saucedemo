@@ -1,12 +1,10 @@
-import { UserRole } from './enums/userRole';
+import { UserRole, UserRoleType } from './enums/userRoles';
 
 // Types for credentials and user role
 export type UserCredentials = {
   username: string;
   password: string;
 };
-
-export type UserRoleType = typeof UserRole[keyof typeof UserRole];
 
 
 // Function to get user credentials based on role

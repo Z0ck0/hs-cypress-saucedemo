@@ -1,38 +1,40 @@
+import { ProductKeyType } from '../support/enums/productNames';
+
 export class CartPage {
 
     //------------------------------------------------
     // Cart Page Selectors
     //------------------------------------------------
-    private cartList() {
-        return cy.getByTestId('cart-list');
-    }
-    private itemQuantity() {
+    private itemQuantity(){
         return cy.getByTestId('item-quantity');
     }
-    private removeButton(string: string) {
-        return cy.getByTestId(`remove-${string}`);
-    }
-
-
-    //------------------------------------------------
-    // Cart Page Actions
-    //------------------------------------------------
-    getItemQuantity() {
-        return this.itemQuantity().invoke('text');
+    
+    private removeButton(productKey: ProductKeyType){
+        return cy.getByTestId(`remove-${productKey}`);
     }
 
 
     //------------------------------------------------
     // Cart Page Assertions Methods
     //------------------------------------------------
-    expectCartListToBeVisible(): void {
-        this.cartList().should('be.visible');
+    /**
+     * Assert that the remove button for a specific product is visible
+     * @param productKey - The product key identifier
+     * @example
+     * expectRemoveButtonToBeVisible(ProductKeys.BACKPACK);
+     */
+    expectRemoveButtonToBeVisible(productKey: ProductKeyType): void {
+        this.removeButton(productKey).should('be.visible');
     }
-    expectRemoveButtonToBeVisible(string: string): void {
-        this.removeButton(string).should('be.visible');
-    }
-    expectItemQuantityToBe(string: string): void {
-        this.itemQuantity().should('have.text', string);
+    
+    /**
+     * Assert that the item quantity matches the expected value
+     * @param expectedQuantity - The expected quantity as a string (e.g., '1', '2')
+     * @example
+     * expectItemQuantityToBe('1');
+     */
+    expectItemQuantityToBe(expectedQuantity: string): void {
+        this.itemQuantity().should('have.text', expectedQuantity);
     }
 }
 

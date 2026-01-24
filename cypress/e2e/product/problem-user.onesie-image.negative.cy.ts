@@ -1,13 +1,15 @@
 import { onLoginPage } from '../../pages/loginPage';
-import { UserRole } from '../../support/enums/userRole';
+import { UserRole } from '../../support/enums/userRoles';
 import { onInventoryPage } from '../../pages/inventoryPage';
+import { ProductName } from '../../support/enums/productNames';
 
 describe('Login as problem user ', () => {
     beforeEach(() => {
         onLoginPage.loginAs(UserRole.PROBLEM);
         onInventoryPage.expectUserToBeLoggedIn();
     });
-    it('Check that the onesie image is shown as the source for the onesie', () => {
-        onInventoryPage.expectProductImageSrcToMatch('sauce-labs-onesie-img', 'red-onesie');
+
+    it('Should verify that the onesie image is shown as the source for the onesie', () => {
+        onInventoryPage.expectProductImageSrcToMatch(ProductName.ONESIE_IMG, 'red-onesie');
     });
 });

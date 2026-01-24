@@ -1,30 +1,40 @@
-import { getCredentials, UserRoleType } from '../support/userCredentials';
+import { UserRoleType } from '../support/enums/userRoles';
+import { getCredentials } from '../support/userCredentials';
 
 export class LoginPage {
-
     //------------------------------------------------
     // Login Page Selectors
     //------------------------------------------------
     private loginPageUrl() {
         return cy.url();
     }
+
     private usernameInput() {
         return cy.getByTestId('username');
     }
+
     private passwordInput() {
         return cy.getByTestId('password');
     }
+
     private loginButton() {
         return cy.getByTestId('login-button');
     }
+
     private loginErrorMessage() {
         return cy.getByTestId('error');
     }
 
 
     //------------------------------------------------
-    // Inventory Page Actions
+    // Login Page Actions
     //------------------------------------------------
+    /**
+     * Login with a specific user role
+     * @param role - The user role to login as (STANDARD, LOCKED_OUT, PROBLEM, ERROR)
+     * @example
+     * loginAs(UserRole.STANDARD);
+     */
     loginAs(role: UserRoleType): void {
         const user = getCredentials(role);
         this.usernameInput().clear().type(user.username);
@@ -47,6 +57,12 @@ export class LoginPage {
         this.passwordInput().should('be.visible')
         this.loginButton().should('be.visible')
     }
+
+    /**
+     * Assert that the locked out error message is displayed
+     * @example
+     * expectLockedOutErrorToBeDisplayed();
+     */
     expectLockedOutErrorToBeDisplayed(): void {
         this.loginErrorMessage()
             .should('be.visible')
