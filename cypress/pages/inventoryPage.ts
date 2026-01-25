@@ -17,35 +17,40 @@ export class InventoryPage {
         return cy.getByTestId('shopping-cart-link');
     }
 
-    private cartBadge() {
-        return cy.getByTestId('shopping-cart-badge');
-    }
-
     private inventoryItemImage(productKey: ProductKeyType) {
         return cy.getByTestId(`inventory-item-${productKey}`);
+    }
+
+    private removeButton(productKey: ProductKeyType) {
+        return cy.getByTestId(`remove-${productKey}`);
+    }
+
+    private burgerMenuButton() {
+        return cy.get('#react-burger-menu-btn');
+    }
+
+    private logoutLink() {
+        return cy.getByTestId('logout-sidebar-link');
     }
 
 
     //------------------------------------------------
     // Inventory Page Actions
     //------------------------------------------------
-    /**
-     * Add an item to the cart
-     * @param productKey - The product key to add to the cart
-     * @example
-     * addItemToCart(ProductKeys.FLEECE_JACKET);
-     */
     addItemToCart(productKey: ProductKeyType): void {
         cy.getByTestId(`add-to-cart-${productKey}`).click();
     }
 
-    /**
-     * Open the shopping cart by clicking the cart link
-     * @example
-     * openCart();
-     */
     openCart(): void {
         this.cartLink().click();
+    }
+
+    openBurgerMenu(): void {
+        this.burgerMenuButton().click();
+    }
+
+    clickLogout(): void {
+        this.logoutLink().click();
     }
 
 
@@ -79,15 +84,24 @@ export class InventoryPage {
     }
 
     /**
-     * Assert that the shopping cart badge is displayed (indicating items in cart)
+     * Assert that the remove button is displayed
+     * @param productKey - The product key
      * @example
-     * expectCartBadgeToBeDisplayed();
+     * expectRemoveButtonShouldBeDisplayed(ProductKeys.FLEECE_JACKET);
      */
-    expectCartBadgeToBeDisplayed(): void {
-        this.cartBadge()
-            .should('be.visible')
+    expectRemoveButtonToBeVisibleOn(productKey: ProductKeyType) {
+        this.removeButton(productKey)
+            .should('be.visible');
     }
 
+    /**
+     * Assert that the burger menu is visible
+     * @example
+     * expectBurgerMenuToBeVisible();
+     */
+    expectBurgerMenuToBeVisible(): void {
+        this.burgerMenuButton().should('be.visible');
+    }
 }
 
 export const onInventoryPage = new InventoryPage();

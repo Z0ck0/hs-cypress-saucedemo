@@ -20,9 +20,14 @@ Cypress.Commands.add('loginAsSession', (role: UserRoleType) => {
         onLoginPage.loginAs(role);
     }, {
         validate() {
-            onInventoryPage.expectUserToBeLoggedIn();
+            onInventoryPage.expectBurgerMenuToBeVisible();
         },
     });
+});
+
+Cypress.Commands.add('logout', () => {
+    onInventoryPage.openBurgerMenu();
+    onInventoryPage.clickLogout();
 });
 
 // Declare global namespace for custom commands
@@ -45,6 +50,8 @@ declare global {
              * @example cy.loginAsSession(UserRole.STANDARD);
              */
             loginAsSession(role: UserRoleType): Cypress.Chainable<void>;
+
+            logout(): Cypress.Chainable<void>;
         }
     }
 }
