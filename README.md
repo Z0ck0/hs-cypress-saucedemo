@@ -1,9 +1,9 @@
-# Hornetsecurity Cypress Code Challenge
+# Cypress Code Challenge
 
 Basic Cypress + TypeScript E2E framework setup for testing https://www.saucedemo.com.
 
 
-## Setup
+## Setup 
 1. **Install dependencies**
    ```bash
    npm install
@@ -49,3 +49,24 @@ Basic Cypress + TypeScript E2E framework setup for testing https://www.saucedemo
 - Global `beforeEach` hook that visits the home page and verifies the login page
 - Helper for user credentials wired to SauceDemo user roles
 - Smoke test for app load and positive cart flow for the standard user
+
+
+## Intentionally Not Implemented
+The following patterns were **not** added to this project:
+- **BasePage** — shared base class for page objects  
+- **Helper classes** - dedicated helper modules  
+- **Utils classes** - generic utility modules  
+- **Page Object Factory** - factory for creating page objects
+- **Test Facade** - facade that exposes high-level workflows (e.g. login + add to cart) 
+- **Reports** - HTML or other 3rd‑party test reports  
+
+
+**Why:**
+- **BasePage** - There is not enough shared logic across the few page objects to justify a base class; each page stays self-contained.
+- **Helper classes** — There are not enough repeatable actions to extract into dedicated helpers; custom commands cover what we need.
+- **Utils classes** — Same as helpers: not enough repeatable, generic logic to warrant a utils layer.
+- **Page Object Factory** - The flows are simple and direct; no need for a factory that creates page objects 
+- **Test Facade** -  The flows are simple, so there’s no need for a test facad that orchestrates multi-page workflows.
+- **Reports** — The task asked not to install 3rd‑party libraries unless necessary. Cypress’s built‑in output and the Test Runner suffice for this scope.
+
+The project is small, and keeping the framework simple improves readability and fast onboarding. These patterns can be added later if the suite grows—the current structure leaves room for that without locking you in.
