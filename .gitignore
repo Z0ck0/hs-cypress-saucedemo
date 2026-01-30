@@ -12,4 +12,6 @@ cypress/downloads/
 cypress/videos/
 cypress/reports/
 
+# Cypress environment variables
+cypress.env.json
 
